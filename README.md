@@ -31,6 +31,7 @@ DoseBuddy is an automated robotic pill dispensing system integrated with a mobil
 - Node.js 18.0 or higher
 - npm or yarn
 - MongoDB
+- MySQL
 
 ### Setup Instructions
 1. Clone the repository
