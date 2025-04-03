@@ -1,12 +1,11 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Breadcrumb = React.forwardRef(({ ...props }, ref) => (
-  <nav ref={ref} aria-label="breadcrumb" {...props} />
-))
+const Breadcrumb = React.forwardRef(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />)
 Breadcrumb.displayName = "Breadcrumb"
 
 const BreadcrumbList = React.forwardRef(({ className, ...props }, ref) => (
@@ -30,19 +29,17 @@ const BreadcrumbItem = React.forwardRef(({ className, ...props }, ref) => (
 ))
 BreadcrumbItem.displayName = "BreadcrumbItem"
 
-const BreadcrumbLink = React.forwardRef(
-  ({ asChild, className, ...props }, ref) => {
-    const Comp = asChild ? Slot : "a"
+const BreadcrumbLink = React.forwardRef(({ asChild, className, ...props }, ref) => {
+  const Comp = asChild ? Slot : "a"
 
-    return (
-      <Comp
-        ref={ref}
-        className={cn("transition-colors hover:text-foreground", className)}
-        {...props}
-      />
-    )
-  }
-)
+  return (
+    <Comp
+      ref={ref}
+      className={cn("transition-colors hover:text-foreground", className)}
+      {...props}
+    />
+  )
+})
 BreadcrumbLink.displayName = "BreadcrumbLink"
 
 const BreadcrumbPage = React.forwardRef(({ className, ...props }, ref) => (
@@ -57,7 +54,11 @@ const BreadcrumbPage = React.forwardRef(({ className, ...props }, ref) => (
 ))
 BreadcrumbPage.displayName = "BreadcrumbPage"
 
-const BreadcrumbSeparator = ({ children, className, ...props }) => (
+const BreadcrumbSeparator = ({
+  children,
+  className,
+  ...props
+}) => (
   <li
     role="presentation"
     aria-hidden="true"
@@ -69,7 +70,10 @@ const BreadcrumbSeparator = ({ children, className, ...props }) => (
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 
-const BreadcrumbEllipsis = ({ className, ...props }) => (
+const BreadcrumbEllipsis = ({
+  className,
+  ...props
+}) => (
   <span
     role="presentation"
     aria-hidden="true"
@@ -89,5 +93,5 @@ export {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis
+  BreadcrumbEllipsis,
 }

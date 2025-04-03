@@ -1,12 +1,11 @@
-import * as React from "react"
-import { useTheme } from "next-themes";
-import { Toaster as Sonner } from "sonner";
 
-const Toaster = (props) => {
-  const { theme = "system" } = useTheme();
+import { Toaster as SonnerToaster } from "sonner"
+
+const Toaster = ({ ...props }) => {
+  const theme = "system"
 
   return (
-    <Sonner
+    <SonnerToaster
       theme={theme}
       className="toaster group"
       toastOptions={{
@@ -22,7 +21,7 @@ const Toaster = (props) => {
       }}
       {...props}
     />
-  );
-};
+  )
+}
 
-export { Toaster };
+export { Toaster }

@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -85,7 +86,7 @@
 
 @layer base {
   * {
-    @apply border-[hsl(var(--border))];
+    @apply border-border;
   }
 
   body {
@@ -114,17 +115,16 @@
   .section-padding {
     @apply py-12 px-4 sm:py-16 sm:px-6 md:py-20 lg:px-8 xl:py-24;
   }
-
+  
   .feature-card {
     @apply rounded-lg bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
   }
-
+  
   .pill-button {
     @apply rounded-full bg-medical-500 px-6 py-3 text-white font-medium transition-all hover:bg-medical-600 hover:shadow-md;
   }
-
+  
   .step-card {
     @apply rounded-lg bg-white p-6 border border-gray-100 shadow-sm;
   }
 }
-

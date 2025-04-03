@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 
@@ -37,7 +38,10 @@ const AlertDialogContent = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 
-const AlertDialogHeader = ({ className, ...props }) => (
+const AlertDialogHeader = ({
+  className,
+  ...props
+}) => (
   <div
     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
@@ -48,7 +52,10 @@ const AlertDialogHeader = ({ className, ...props }) => (
 )
 AlertDialogHeader.displayName = "AlertDialogHeader"
 
-const AlertDialogFooter = ({ className, ...props }) => (
+const AlertDialogFooter = ({
+  className,
+  ...props
+}) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
@@ -68,15 +75,13 @@ const AlertDialogTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
 
-const AlertDialogDescription = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <AlertDialogPrimitive.Description
-      ref={ref}
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
-  )
-)
+const AlertDialogDescription = React.forwardRef(({ className, ...props }, ref) => (
+  <AlertDialogPrimitive.Description
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
 AlertDialogDescription.displayName =
   AlertDialogPrimitive.Description.displayName
 
@@ -113,5 +118,5 @@ export {
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogAction,
-  AlertDialogCancel
+  AlertDialogCancel,
 }

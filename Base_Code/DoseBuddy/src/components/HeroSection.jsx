@@ -1,38 +1,34 @@
-import React from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowDown, Bell, Clock, UserCheck } from "lucide-react"
+
+import React from 'react';
+import { Button } from "@/components/ui/button";
+import { ArrowDown, Bell, Clock, UserCheck } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden pt-20 section-padding bg-gradient-to-br from-blue-50 to-white"
-    >
+    <section id="home" className="relative overflow-hidden pt-20 section-padding bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
             <h1 className="h1 text-gray-900">
-              Never Miss a Dose <span className="text-medical-500">Again</span>
+              Never Miss a Dose
             </h1>
             <h2 className="text-2xl font-medium text-gray-600">
               Smart, Secure, Automated.
             </h2>
             <p className="text-gray-600 text-lg max-w-md">
-              The SmartPillPal revolutionizes medication management with
-              intelligent dispensing, real-time notifications, and caregiver
-              monitoring to ensure perfect medication adherence.
+              The DoseBuddy revolutionizes medication management with intelligent dispensing, 
+              real-time notifications, and caregiver monitoring to ensure perfect medication adherence.
             </p>
-
+            
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button className="pill-button">Get Started</Button>
-              <Button
-                variant="outline"
-                className="rounded-full border-medical-300 text-medical-600"
-              >
+              <Button className="pill-button">
+                Get Started
+              </Button>
+              <Button variant="outline" className="rounded-full border-medical-300 text-medical-600">
                 See How It Works
               </Button>
             </div>
-
+            
             {/* Quick Benefits */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
               <div className="flex items-center gap-2">
@@ -61,17 +57,16 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-
-          <div className="relative flex justify-center items-center animate-slide-up lg:justify-end">
-            <div className="relative w-full max-w-md">
-              {/* Placeholder for 3D mockup image */}
+          
+          <div className="relative flex justify-center items-center lg:justify-end h-full">
+            <div className="w-full max-w-md">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-medical-100 to-blue-50 shadow-lg flex items-center justify-center p-8">
                 <div className="w-full h-full relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-48 h-64 bg-white rounded-lg shadow-xl transform rotate-3 border-2 border-medical-200"></div>
+                    <div className="w-3/4 h-3/4 bg-white rounded-lg shadow-xl transform rotate-3 border-2 border-medical-200"></div>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-48 h-64 bg-white rounded-lg shadow-xl transform -rotate-3 border-2 border-medical-300">
+                    <div className="w-3/4 h-3/4 bg-white rounded-lg shadow-xl transform -rotate-3 border-2 border-medical-300">
                       <div className="w-full h-full flex flex-col items-center justify-center p-4">
                         <div className="w-full rounded-md bg-medical-100 h-8 mb-3"></div>
                         <div className="grid grid-cols-2 gap-2 w-full">
@@ -92,19 +87,16 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-
+        
         <div className="flex justify-center mt-12">
-          <a
-            href="#how-it-works"
-            className="flex flex-col items-center text-gray-500 hover:text-medical-500 transition-colors"
-          >
+          <a href="#how-it-works" className="flex flex-col items-center text-gray-500 hover:text-medical-500 transition-colors">
             <span className="text-sm mb-1">Discover More</span>
             <ArrowDown className="h-5 w-5 animate-bounce" />
           </a>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;
