@@ -4,7 +4,7 @@ import {Bell, Clock, UserCheck } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative overflow-hidden pt-20 section-padding bg-gradient-to-br from-blue-50 to-white">
+    <section id="home" className="relative overflow-hidden pt-26 mt-5 section-padding bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
