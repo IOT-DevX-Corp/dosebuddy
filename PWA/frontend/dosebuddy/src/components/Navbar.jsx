@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
-import { X, Menu, Bell } from "lucide-react";
+import { X, Menu} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button className="pill-button">
-              Get Early Access
+              Get Started
             </Button>
           </div>
           

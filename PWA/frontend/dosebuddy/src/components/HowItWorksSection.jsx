@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Clock, Bell, User, Check, Monitor } from 'lucide-react';
 
@@ -44,7 +43,7 @@ const HowItWorksSection = () => {
   return (
     <section id="how-it-works" className="section-padding bg-white">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="h2 mb-4 text-gray-900">How It Works</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our smart pill dispenser makes medication management simple and error-free.
@@ -53,12 +52,9 @@ const HowItWorksSection = () => {
         </div>
         
         <div className="relative">
-          {/* Connected line */}
-          <div className="absolute hidden lg:block left-1/2 top-12 bottom-0 w-1 bg-gray-100 -translate-x-1/2 z-0"></div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {steps.map((step, index) => (
-              <div key={step.id} className={`relative ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16 lg:col-start-2'}`}>
+              <div key={step.id} className={`relative ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8 lg:col-start-2'}`}>
                 <div className="step-card hover:shadow-md transition-shadow group">
                   <div className="flex items-start gap-4">
                     <div className={`${step.color} rounded-full p-3 flex-shrink-0 group-hover:scale-110 transition-transform`}>
@@ -82,9 +78,6 @@ const HowItWorksSection = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Connector dot */}
-                <div className="hidden lg:flex absolute top-12 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-white border-4 border-medical-500 z-10"></div>
               </div>
             ))}
           </div>

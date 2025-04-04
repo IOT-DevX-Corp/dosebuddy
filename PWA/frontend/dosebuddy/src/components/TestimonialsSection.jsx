@@ -1,7 +1,8 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -63,6 +64,44 @@ const TestimonialCard = ({ testimonial, className }) => {
 };
 
 const TestimonialsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [slideDirection, setSlideDirection] = useState('right');
+
+  // Calculate the total width of movement
+  const cardWidth = 50; // 50% of container width
+  const totalCards = testimonials.length;
+
+  const nextSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setSlideDirection('right');
+    
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = prevIndex + 1;
+      return nextIndex >= totalCards ? 0 : nextIndex;
+    });
+  };
+
+  const prevSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setSlideDirection('left');
+    
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = prevIndex - 1;
+      return nextIndex < 0 ? totalCards - 1 : nextIndex;
+    });
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsAnimating(false);
+    }, 500); // Increased duration for smoother animation
+
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
+
   return (
     <section id="testimonials" className="section-padding bg-white">
       <div className="container mx-auto">
@@ -74,16 +113,49 @@ const TestimonialsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard 
-              key={testimonial.id} 
-              testimonial={testimonial} 
-              className={`transform transition-transform ${
-                index % 2 === 0 ? 'hover:translate-y-2' : 'hover:-translate-y-2'
-              }`}
-            />
-          ))}
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div 
+              className={cn(
+                "flex transition-all duration-500 ease-in-out",
+                isAnimating && slideDirection === 'right' && 'animate-slide-right',
+                isAnimating && slideDirection === 'left' && 'animate-slide-left'
+              )}
+              style={{ 
+                transform: `translateX(-${currentIndex * cardWidth}%)`,
+              }}
+            >
+              {/* Append first card at end for seamless loop */}
+              {[...testimonials, testimonials[0]].map((testimonial, index) => (
+                <div 
+                  key={`${testimonial.id}-${index}`}
+                  className="w-1/2 flex-shrink-0 px-4"
+                >
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    className="transform transition-transform hover:-translate-y-2"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          <Button
+            variant="outline"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 rounded-full p-2 bg-white shadow-lg border-medical-200 hover:bg-medical-50 hover:text-medical-600"
+            onClick={prevSlide}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+
+          <Button
+            variant="outline"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 rounded-full p-2 bg-white shadow-lg border-medical-200 hover:bg-medical-50 hover:text-medical-600"
+            onClick={nextSlide}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
         </div>
       </div>
     </section>

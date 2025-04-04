@@ -13,8 +13,8 @@ const coreFeatures = [
   },
   {
     id: 2,
-    title: 'LED Alerts',
-    description: 'Visual reminders with color-coded LED indicators for different medication events.',
+    title: 'LED and Voice Alerts',
+    description: 'Visual and vocal reminders with color-coded LED indicators and Speakers for different medication events.',
     icon: <Bell className="h-8 w-8 text-medical-500" />
   },
   {

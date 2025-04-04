@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Bell, Clock, UserCheck } from "lucide-react";
+import {Bell, Clock, UserCheck } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -10,7 +9,7 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
             <h1 className="h1 text-gray-900">
-              Never Miss a Dose
+              <span className="text-medical-900 font-bold">Never miss<span className="text-sky-blue-900"> a </span><span className="text-medical-500">dose again</span></span>
             </h1>
             <h2 className="text-2xl font-medium text-gray-600">
               Smart, Secure, Automated.
@@ -24,7 +23,15 @@ const HeroSection = () => {
               <Button className="pill-button">
                 Get Started
               </Button>
-              <Button variant="outline" className="rounded-full border-medical-300 text-medical-600">
+              <Button 
+                variant="outline" 
+                className="rounded-full border-medical-300 text-medical-600"
+                onClick={() => {
+                  document.getElementById('how-it-works').scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                }}
+              >
                 See How It Works
               </Button>
             </div>
@@ -58,8 +65,8 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="relative flex justify-center items-center lg:justify-end h-full">
-            <div className="w-full max-w-md">
+          <div className="relative flex justify-center items-center lg:justify-end h-full sticky top-24 self-start">
+            <div className="w-full max-w-md transform transition-all duration-300 ease-in-out">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-medical-100 to-blue-50 shadow-lg flex items-center justify-center p-8">
                 <div className="w-full h-full relative">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -86,13 +93,6 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-        </div>
-        
-        <div className="flex justify-center mt-12">
-          <a href="#how-it-works" className="flex flex-col items-center text-gray-500 hover:text-medical-500 transition-colors">
-            <span className="text-sm mb-1">Discover More</span>
-            <ArrowDown className="h-5 w-5 animate-bounce" />
-          </a>
         </div>
       </div>
     </section>

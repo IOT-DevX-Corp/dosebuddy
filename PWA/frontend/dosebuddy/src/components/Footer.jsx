@@ -1,16 +1,15 @@
 import React from 'react';
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto py-12 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">DoseBuddy</h3>
-            <p className="mb-4">Revolutionizing medication management with smart technology.</p>
-            <div className="flex space-x-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          {/* Title Section - Left aligned */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-bold text-white mb-2">DoseBuddy</h3>
+            <p className="mb-6">Revolutionizing medication management with smart technology.</p>
+            <div className="flex space-x-4 mt-auto">
               <a href="#" className="hover:text-medical-300 transition-colors">
                 <span className="sr-only">Twitter</span>
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -32,9 +31,10 @@ const Footer = () => {
             </div>
           </div>
           
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Links</h3>
-            <ul className="space-y-2">
+          {/* Links Section - Left aligned content */}
+          <div className="flex flex-col md:items-center">
+            <h3 className="text-xl font-bold text-white mb-6">Links</h3>
+            <ul className="space-y-3">
               <li><a href="#home" className="hover:text-medical-300 transition-colors">Home</a></li>
               <li><a href="#how-it-works" className="hover:text-medical-300 transition-colors">How it Works</a></li>
               <li><a href="#features" className="hover:text-medical-300 transition-colors">Features</a></li>
@@ -43,9 +43,10 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Resources</h3>
-            <ul className="space-y-2">
+          {/* Resources Section - Left aligned content */}
+          <div className="flex flex-col md:items-center">
+            <h3 className="text-xl font-bold text-white mb-6">Resources</h3>
+            <ul className="space-y-3">
               <li><a href="#" className="hover:text-medical-300 transition-colors">Documentation</a></li>
               <li><a href="#" className="hover:text-medical-300 transition-colors">GitHub Repository</a></li>
               <li><a href="#" className="hover:text-medical-300 transition-colors">App Downloads</a></li>
@@ -53,15 +54,6 @@ const Footer = () => {
               <li><a href="#" className="hover:text-medical-300 transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-medical-300 transition-colors">Terms of Service</a></li>
             </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Connect</h3>
-            <p className="mb-4">Join our community and stay up-to-date with the latest developments.</p>
-            <div className="flex gap-2">
-              <Input placeholder="Email address" className="bg-gray-800 border-gray-700 text-white" />
-              <Button className="pill-button">Join</Button>
-            </div>
           </div>
         </div>
         

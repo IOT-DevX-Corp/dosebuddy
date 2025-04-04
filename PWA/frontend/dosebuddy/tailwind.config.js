@@ -1,4 +1,3 @@
-
 export default {
 	darkMode: ["class"],
 	content: [
@@ -124,6 +123,22 @@ export default {
 					'50%': {
 						opacity: '0.8'
 					}
+				},
+				'slide-left': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(-50%)' }
+				},
+				'slide-right': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-50%)' }
+				},
+				'slide-from-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'slide-from-left': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' }
 				}
 			},
 			animation: {
@@ -131,8 +146,15 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'slide-up': 'slide-up 0.7s ease-out',
-				'pulse-light': 'pulse-light 2s infinite'
-			}
+				'pulse-light': 'pulse-light 2s infinite',
+				'slide-left': 'slide-left 0.5s ease-in-out',
+				'slide-right': 'slide-right 0.5s ease-in-out',
+				'slide-from-right': 'slide-from-right 0.3s ease-out',
+				'slide-from-left': 'slide-from-left 0.3s ease-out'
+			},
+			height: {
+				'screen-minus-header': 'calc(100vh - 6rem)', // Adjust the value based on your header height
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
