@@ -11,6 +11,9 @@ const startServer = async () => {
     
     app.use(express.json());
 
+    const monitoringRoutes = require('./routes/monitoring');
+    app.use('/api/monitoring', monitoringRoutes);
+
     app.get('/', (req, res) => {
       res.send('Hello World!');
     });

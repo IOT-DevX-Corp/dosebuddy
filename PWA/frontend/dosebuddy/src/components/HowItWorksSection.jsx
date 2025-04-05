@@ -39,7 +39,7 @@ const steps = [
   }
 ];
 
-const HowItWorksSection = () => {
+const MachineTutorial = () => {
   return (
     <section id="how-it-works" className="section-padding bg-white">
       <div className="container mx-auto">
@@ -87,4 +87,4 @@ const HowItWorksSection = () => {
   );
 };
 
-export default HowItWorksSection;
+export default MachineTutorial;
