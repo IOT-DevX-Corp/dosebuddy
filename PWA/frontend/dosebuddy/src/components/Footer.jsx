@@ -1,5 +1,6 @@
 import React from 'react';
-import { cn } from "@/lib/utils";
+import { FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -16,17 +17,51 @@ const Footer = () => {
           <div className="flex flex-col md:items-center">
             <h3 className="text-xl font-bold text-white mb-6">Links</h3>
             <ul className="space-y-3">
-              <li><a href="#home" className="hover:text-medical-300 transition-colors">Website</a></li>
-              <li><a href="#how-it-works" className="hover:text-medical-300 transition-colors">Application</a></li>
+              <li>
+                <Link 
+                  to="/" 
+                  className="hover:text-medical-300 transition-colors"
+                >
+                  Website
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="#how-it-works" 
+                  className="hover:text-medical-300 transition-colors"
+                >
+                  Application
+                </a>
+              </li>
             </ul>
           </div>
           
-          {/* Socials Section */}
+          {/* Socials Section with Icons */}
           <div className="flex flex-col md:items-center">
             <h3 className="text-xl font-bold text-white mb-6">Socials</h3>
-            <ul className="space-y-3">
-              <li><a href="#twitter" className="hover:text-medical-300 transition-colors">Twitter</a></li>
-              <li><a href="#linkedin" className="hover:text-medical-300 transition-colors">LinkedIn</a></li>
+            <ul className="flex space-x-4">
+              <li>
+                <a 
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="hover:text-medical-300 transition-colors text-2xl"
+                  aria-label="Twitter"
+                >
+                  <FaTwitter />
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-medical-300 transition-colors text-2xl"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -38,6 +73,7 @@ const Footer = () => {
             <a href="#terms" className="hover:text-medical-300 transition-colors">Terms</a>
             <a href="#sitemap" className="hover:text-medical-300 transition-colors">Sitemap</a>
           </div>
+          <p className="text-center mt-4">© 2025 DoseBuddy. All rights reserved.</p>
         </div>
       </div>
     </footer>
