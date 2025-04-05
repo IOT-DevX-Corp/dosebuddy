@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-icons": "pwa-asset-generator ./src/assets/Logo.svg ./public/icons --background '#4CAF50' --manifest ./public/manifest.json --index ./index.html"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

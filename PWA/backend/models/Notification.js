@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const notificationSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+const notificationSchema = new Schema({
+    userId: { type: Schema.Types.ObjectId, ref: 'User' },
     type: { type: String, enum: ['reminder', 'system'], required: true },
     title: { type: String, required: true },
     content: String,
@@ -9,4 +9,4 @@ const notificationSchema = new mongoose.Schema({
     read: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model('Notification', notificationSchema);
+export default model('Notification', notificationSchema);

@@ -1,16 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../middleware/auth');
-const userController = require('../controllers/userController');
-const notificationController = require('../controllers/notificationController');
+import { Router } from 'express';
+const router = Router();
+import auth from '../middleware/auth';
+import { getUserProfile, updateQRCode, updateMedications } from '../controllers/userController';
+import { getNotifications, createNotification } from '../controllers/notificationController';
 
 // User routes
-router.get('/user/profile', auth, userController.getUserProfile);
-router.put('/user/qr-code', auth, userController.updateQRCode);
-router.put('/user/medications', auth, userController.updateMedications);
+router.get('/user/profile', auth, getUserProfile);
+router.put('/user/qr-code', auth, updateQRCode);
+router.put('/user/medications', auth, updateMedications);
 
 // Notification routes
-router.get('/notifications', auth, notificationController.getNotifications);
-router.post('/notifications', auth, notificationController.createNotification);
+router.get('/notifications', auth, getNotifications);
+router.post('/notifications', auth, createNotification);
 
-module.exports = router;
+export default router;

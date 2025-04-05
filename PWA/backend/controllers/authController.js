@@ -1,4 +1,4 @@
-import { User } from '../models/User.js';
+import { User } from '../models/User';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import { config } from '../config/config.js';

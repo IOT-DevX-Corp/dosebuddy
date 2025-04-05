@@ -1,14 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/User');
-const Notification = require('../models/Notification');
+import { Router } from 'express';
+const router = Router();
+import { findOne } from '../models/User';
+import Notification from '../models/Notification';
+import { findById } from '../models/Notification';
 
 router.post('/request', async (req, res) => {
     try {
         const { targetUsername, targetEmail, modelNumber, senderUsername, senderEmail } = req.body;
 
         // Find target user
-        const targetUser = await User.findOne({ 
+        const targetUser = await findOne({ 
             username: targetUsername,
             email: targetEmail 
         });
@@ -45,7 +46,7 @@ router.post('/response', async (req, res) => {
     try {
         const { notificationId, accept } = req.body;
 
-        const notification = await Notification.findById(notificationId);
+        const notification = await findById(notificationId);
         if (!notification) {
             return res.status(404).json({ message: 'Request not found' });
         }
@@ -67,4 +68,4 @@ router.post('/response', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

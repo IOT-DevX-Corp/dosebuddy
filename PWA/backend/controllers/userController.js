@@ -1,7 +1,7 @@
-const User = require('../models/User');
-const Notification = require('../models/Notification');
+import User from '../models/User';
+import Notification, { insertMany } from '../models/Notification';
 
-exports.getUserProfile = async (req, res) => {
+export async function getUserProfile(req, res) {
     try {
         const user = await User.findById(req.user.id)
             .select('-password')
@@ -16,9 +16,9 @@ exports.getUserProfile = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
-};
+}
 
-exports.updateQRCode = async (req, res) => {
+export async function updateQRCode(req, res) {
     try {
         const { qrCode } = req.body;
         const user = await User.findById(req.user.id);
@@ -46,9 +46,9 @@ exports.updateQRCode = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
-};
+}
 
-exports.updateMedications = async (req, res) => {
+export async function updateMedications(req, res) {
     try {
         const { medications } = req.body;
         const user = await User.findById(req.user.id);
@@ -68,7 +68,7 @@ exports.updateMedications = async (req, res) => {
                 content: `${user.username} has updated their medication schedule`
             };
 
-            await Notification.insertMany(
+            await insertMany(
                 user.monitoredBy.map(monitorId => ({
                     ...notification,
                     userId: monitorId
@@ -80,4 +80,4 @@ exports.updateMedications = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
-};
+}

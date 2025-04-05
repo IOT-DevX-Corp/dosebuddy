@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+import { Schema, model } from 'mongoose';
+import { hash, compare } from 'bcryptjs';
 
-const medicationScheduleSchema = new mongoose.Schema({
+const medicationScheduleSchema = new Schema({
   time: { type: String, required: true },
   taken: { type: Boolean, default: false }
 });
 
-const medicationSchema = new mongoose.Schema({
+const medicationSchema = new Schema({
   name: { type: String, required: true },
   pills: { type: Number, required: true, min: 1 },
   doses: { type: Number, required: true, min: 1 },
@@ -16,7 +16,7 @@ const medicationSchema = new mongoose.Schema({
   schedule: [medicationScheduleSchema]
 });
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   firstName: { 
     type: String, 
     required: true,
@@ -59,8 +59,8 @@ const userSchema = new mongoose.Schema({
   otpExpiry: { type: Date },
   qrCode: { type: String, default: '' },
   medications: [medicationSchema],
-  monitoredBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  monitoring: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  monitoredBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  monitoring: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 }, {
   timestamps: true
 });
@@ -71,7 +71,7 @@ userSchema.index({ username: 1 });
 
 userSchema.pre('save', async function(next) {
   if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10);
+    this.password = await hash(this.password, 10);
   }
   if (!this.username) {
     this.username = `${this.firstName.toLowerCase()}_${this.lastName.toLowerCase()}`;
@@ -81,9 +81,9 @@ userSchema.pre('save', async function(next) {
 
 // Add method to compare passwords
 userSchema.methods.comparePassword = async function(candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+  return await compare(candidatePassword, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const User = model('User', userSchema);
 
-module.exports = { User };
+export default { User };

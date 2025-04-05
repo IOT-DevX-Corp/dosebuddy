@@ -1,16 +1,16 @@
-const Notification = require('../models/Notification');
+import Notification, { find } from '../models/Notification';
 
-exports.getNotifications = async (req, res) => {
+export async function getNotifications(req, res) {
     try {
-        const notifications = await Notification.find({ userId: req.user.id })
+        const notifications = await find({ userId: req.user.id })
             .sort({ timestamp: -1 });
         res.json(notifications);
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
-};
+}
 
-exports.createNotification = async (req, res) => {
+export async function createNotification(req, res) {
     try {
         const { type, title, content } = req.body;
         const notification = new Notification({
@@ -26,4 +26,4 @@ exports.createNotification = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
-};
+}
