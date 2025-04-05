@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {/* Title Section */}
           <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-white mb-2">DoseBuddy</h3>
+            <h3 className="text-xl font-bold text-white mb-2"><span className="text-medical-500 font-bold text-2xl">Dose<span className="text-medical-200">Buddy</span></span></h3>
             <p className="mb-6">Revolutionizing medication management with smart technology.</p>
           </div>
           
