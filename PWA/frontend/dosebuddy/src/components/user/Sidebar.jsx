@@ -11,8 +11,9 @@ import {
     FaBell,
     FaSignOutAlt,
 } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
-const Sidebar = ({ setActiveComponent, activeComponent }) => {
+const Sidebar = ({ setActiveComponent, activeComponent, hasQR, hasMedications, acceptedMembers }) => {
     const [isMembersOpen, setIsMembersOpen] = useState(false);
     const [userData, setUserData] = useState({
         username: 'Sung Jinwoo',
@@ -70,86 +71,96 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
                     Dashboard
                 </button>
 
-                <button
-                    onClick={() => setActiveComponent("medicine-doses")}
-                    className={getButtonClass("medicine-doses")}
-                >
-                    <FaPills className={activeComponent === "medicine-doses" ? "text-medical-600" : "text-medical-500"} />
-                    Medicine Doses
-                </button>
+                {hasQR && (
+                    <button
+                        onClick={() => setActiveComponent("medicine-doses")}
+                        className={getButtonClass("medicine-doses")}
+                    >
+                        <FaPills className={activeComponent === "medicine-doses" ? "text-medical-600" : "text-medical-500"} />
+                        Medicine Doses
+                    </button>
+                )}
 
-
-                <button
-                    onClick={() => setActiveComponent("schedule")}
-                    className={getButtonClass("schedule")}
-                >
-                    <FaCalendarAlt className={activeComponent === "schedule" ? "text-medical-600" : "text-medical-500"} />
-                    Schedule
-                </button>
+                {hasQR && hasMedications && (
+                    <button
+                        onClick={() => setActiveComponent("schedule")}
+                        className={getButtonClass("schedule")}
+                    >
+                        <FaCalendarAlt className={activeComponent === "schedule" ? "text-medical-600" : "text-medical-500"} />
+                        Schedule
+                    </button>
+                )}
 
                 {/* Members Dropdown */}
-                <div className="relative">
-                    <button
-                        onClick={() => setIsMembersOpen(!isMembersOpen)}
-                        className={`${buttonClass} justify-between ${isMembersOpen
-                                ? "bg-medical-50 text-medical-600 shadow-sm border border-medical-100"
-                                : "text-gray-700 hover:text-medical-600 hover:bg-medical-50 hover:shadow-sm"
-                            }`}
-                    >
-                        <div className="flex items-center gap-2">
-                            <FaUsers className={isMembersOpen ? "text-medical-600" : "text-medical-500"} />
-                            Members
-                        </div>
-                        <FaChevronDown
-                            className={`transition-transform duration-200 ${isMembersOpen ? "rotate-180 text-medical-600" : "text-medical-500"
+                {acceptedMembers.length > 0 && (
+                    <div className="relative">
+                        <button
+                            onClick={() => setIsMembersOpen(!isMembersOpen)}
+                            className={`${buttonClass} justify-between ${isMembersOpen
+                                    ? "bg-medical-50 text-medical-600 shadow-sm border border-medical-100"
+                                    : "text-gray-700 hover:text-medical-600 hover:bg-medical-50 hover:shadow-sm"
                                 }`}
-                        />
-                    </button>
+                        >
+                            <div className="flex items-center gap-2">
+                                <FaUsers className={isMembersOpen ? "text-medical-600" : "text-medical-500"} />
+                                Members
+                            </div>
+                            <FaChevronDown
+                                className={`transition-transform duration-200 ${isMembersOpen ? "rotate-180 text-medical-600" : "text-medical-500"
+                                    }`}
+                            />
+                        </button>
 
-                    {isMembersOpen && (
-                        <div className="mt-1 pl-4 space-y-1">
-                            <button
-                                onClick={() => setActiveComponent("member-mama")}
-                                className={getButtonClass("member-mama")}
-                            >
-                                <FaUsers className={activeComponent === "member-mama" ? "text-medical-600" : "text-medical-500"} />
-                                Mama Pizza
-                            </button>
-                            <button
-                                onClick={() => setActiveComponent("member-sister")}
-                                className={getButtonClass("member-sister")}
-                            >
-                                <FaUsers className={activeComponent === "member-sister" ? "text-medical-600" : "text-medical-500"} />
-                                Sister Spaghetti
-                            </button>
-                            <button
-                                onClick={() => setActiveComponent("add-member")}
-                                className={getButtonClass("add-member")}
-                            >
-                                <FaPlus className={activeComponent === "add-member" ? "text-medical-600" : "text-medical-500"} />
-                                Add a Member
-                            </button>
-                        </div>
-                    )}
-                    <button
-                        onClick={() => setActiveComponent("notifications")}
-                        className={getButtonClass("notifications")}
-                    >
-                        <FaBell className={activeComponent === "notifications" ? "text-medical-600" : "text-medical-500"} />
-                        Notifications
-                    </button>
+                        {isMembersOpen && (
+                            <div className="mt-1 pl-4 space-y-1">
+                                {acceptedMembers.map(member => (
+                                    <button
+                                        key={member.id}
+                                        onClick={() => setActiveComponent(`member-${member.id}`)}
+                                        className={getButtonClass(`member-${member.id}`)}
+                                    >
+                                        <FaUsers className={activeComponent === `member-${member.id}` ? "text-medical-600" : "text-medical-500"} />
+                                        {member.username}
+                                    </button>
+                                ))}
+                                <button
+                                    onClick={() => setActiveComponent("add-member")}
+                                    className={getButtonClass("add-member")}
+                                >
+                                    <FaPlus className={activeComponent === "add-member" ? "text-medical-600" : "text-medical-500"} />
+                                    Add a Member
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                )}
 
-                    <button
-                        onClick={() => setActiveComponent("machine-tutorial")}
-                        className={getButtonClass("machine-tutorial")}
-                    >
-                        <FaVideo className={activeComponent === "machine-tutorial" ? "text-medical-600" : "text-medical-500"} />
-                        Machine Tutorial
-                    </button>
-                </div>
+                <button
+                    onClick={() => setActiveComponent("notifications")}
+                    className={getButtonClass("notifications")}
+                >
+                    <FaBell className={activeComponent === "notifications" ? "text-medical-600" : "text-medical-500"} />
+                    Notifications
+                </button>
+
+                <button
+                    onClick={() => setActiveComponent("machine-tutorial")}
+                    className={getButtonClass("machine-tutorial")}
+                >
+                    <FaVideo className={activeComponent === "machine-tutorial" ? "text-medical-600" : "text-medical-500"} />
+                    Machine Tutorial
+                </button>
             </nav>
         </div>
     );
+};
+
+Sidebar.propTypes = {
+    setActiveComponent: PropTypes.func.isRequired,
+    activeComponent: PropTypes.string.isRequired,
+    hasQR: PropTypes.bool.isRequired,
+    hasMedications: PropTypes.bool.isRequired,
+    acceptedMembers: PropTypes.array.isRequired
 };
 
 export default Sidebar;
